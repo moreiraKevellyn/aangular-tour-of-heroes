@@ -1,0 +1,12 @@
+#name-hero{
+    text-align: center;
+}
+
+.full-width {
+    width: 100%;
+}
+#button-back-save{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}

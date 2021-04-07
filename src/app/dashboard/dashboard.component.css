@@ -8,6 +8,7 @@
     padding: 0;
     margin: auto;
     max-width: 1000px;
+    
   
     /* flexbox */
     display: -webkit-box;
@@ -23,7 +24,7 @@
   }
   
   a {
-    background-color: #3f525c;
+    
     border-radius: 2px;
     padding: 1rem;
     font-size: 1.2rem;
@@ -49,6 +50,6 @@
     }
   }
   
-  a:hover {
+  /*a:hover {
     background-color: black;
-  }
+  }*/

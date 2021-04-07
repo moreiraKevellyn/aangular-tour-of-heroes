@@ -2,7 +2,18 @@
 <div class="heroes-menu">
   <a *ngFor="let hero of heroes"
       routerLink="/detail/{{hero.id}}">
-      {{hero.name}}
+      <mat-card>
+        <img mat-card-image src="{{hero.imageUrl}}">
+        {{hero.name}}
+
+        <mat-card-content>
+          <p>
+            {{hero.description}}
+          </p>
+        </mat-card-content>
+
+      </mat-card>
+      
   </a>
 </div>
 
