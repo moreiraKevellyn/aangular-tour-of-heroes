@@ -35,8 +35,7 @@ export class HeroEditComponent implements OnInit {
   }
 
   save(): void {
-    this.heroService.updateHero(this.hero)
-      .subscribe(() => this.goBack());
+    this.goBack();
   }
 
 }

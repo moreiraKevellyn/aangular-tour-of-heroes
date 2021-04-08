@@ -4,6 +4,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
@@ -19,6 +20,8 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeroEditComponent } from './hero-edit/hero-edit.component';
+import { HeroNewComponent } from './hero-new/hero-new.component';
+import { HeroFormComponent } from './hero-form/hero-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { HeroEditComponent } from './hero-edit/hero-edit.component';
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
-    HeroEditComponent
+    HeroEditComponent,
+    HeroNewComponent,
+    HeroFormComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,8 @@ import { HeroEditComponent } from './hero-edit/hero-edit.component';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
