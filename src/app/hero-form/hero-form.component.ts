@@ -39,6 +39,7 @@ export class HeroFormComponent implements OnInit {
       this.heroService.addHero(this.hero)
       .subscribe(() => this.heroSaved.emit());
     }
+    
   }
 
 }
