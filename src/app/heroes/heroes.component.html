@@ -1,8 +1,19 @@
 <h2>My Heroes</h2>
 
-<div>
+<div class="search-results" infiniteScroll (scrolled)="onScrollDown()">
 
-<ul class="heroes">
+<a  *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}">
+  <mat-list class="heroes">
+    <mat-list-item class="styleLink">
+      <img matListAvatar src="{{hero.imageUrl}}">
+      <h1 matLine> {{hero.name}}</h1>
+      <button class="delete" title="delete hero"
+      (click)="delete(hero)">x</button>
+    </mat-list-item>
+  </mat-list>
+</a>
+
+<!--<ul class="heroes">
   <li *ngFor="let hero of heroes">
     <a>
       <span></span> {{hero.name}}
@@ -10,11 +21,10 @@
     <button class="delete" title="delete hero"
       (click)="delete(hero)">x</button>
   </li>
-</ul>
+</ul> -->
 
   <!-- (click) passes input value to add() and then clears the input -->
-  <button mat-fab-color="accent" aria-label="Add new hero"[routerLink]="['/new']"> Add 
-</button>
+  <button class="fixedButton" mat-fab-color="accent" aria-label="Add new hero"[routerLink]="['/new']"> Add </button>
 
 
 </div>

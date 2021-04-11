@@ -1,4 +1,5 @@
 import { Component, EventEmitter,Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Hero, HeroUniverse } from '../hero';
 import { HeroService } from '../hero.service';
 
@@ -21,9 +22,24 @@ export class HeroFormComponent implements OnInit {
 
   heroUniverses: Array<HeroUniverse> = [HeroUniverse.DC, HeroUniverse.MARVEL];
 
-  constructor( private heroService: HeroService,) { }
-  ngOnInit(): void {
+  formGroup: FormGroup
+
+  regUrl: string = "(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?";
+
+  constructor( 
+    private heroService: HeroService,
+    private formBuilder: FormBuilder) {
     
+   }
+  ngOnInit(): void {
+    this.formGroup= this.formBuilder.group({
+      name: [this.hero.name, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      id: [this.hero.id],
+      description: [this.hero.description, [Validators.minLength(3)]],
+      
+      imageUrl: [this.hero.imageUrl, [Validators.required, Validators.pattern(this.regUrl)]],
+      universe: [this.hero.universe],
+    });
   }
 
 
@@ -32,11 +48,12 @@ export class HeroFormComponent implements OnInit {
   }
 
   save(): void {
-    if (this.hero.id) {
-      this.heroService.updateHero(this.hero)
-      .subscribe(() => this.onGoBack());
+    let hero: Hero = this.formGroup.value
+    if (hero.id) {
+      this.heroService.updateHero(hero)
+      .subscribe(() => this.heroSaved.emit());
     }else{
-      this.heroService.addHero(this.hero)
+      this.heroService.addHero(hero)
       .subscribe(() => this.heroSaved.emit());
     }
     
