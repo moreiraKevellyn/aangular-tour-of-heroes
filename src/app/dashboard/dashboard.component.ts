@@ -26,7 +26,6 @@ export class DashboardComponent implements OnInit {
   getTopHeroes(){
     this.heroService.getTopHeroes()
       .subscribe(response => {
-        debugger
         this.heroes = response.heroes.slice(1,5)
       });
   }

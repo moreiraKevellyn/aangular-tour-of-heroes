@@ -26,6 +26,7 @@ getHeroes(): void {
   // Para o serviço agora estamos enviando o cursor como um parametro
   this.heroService.getHeroes(this.cursor)
   .subscribe(heroesGetResponse => {
+    debugger
     // Aqui temos uma condição para verificar se ao enviar a requisição tinha ou não um cursor
     if (this.cursor) {
       // Se tiver iremos concatenar a lista atual com os novos itens

@@ -12,7 +12,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class HeroService {
 
   //Essa é a URL base da nossa API, todas as requisições irão ser para endpoits dela
-  private heroesUrl = 'https://api-default-309921.rj.r.appspot.com';
+  private heroesUrl = //'http://127.0.0.1:8080';
+  'https://api-default-309921.rj.r.appspot.com';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,7 +25,7 @@ export class HeroService {
 
   /** GET heroes from the server */
   getHeroes(cursor?: string): Observable<HeroGetResponse> {
-    return this.http.get<HeroGetResponse>(`${this.heroesUrl}/heroes?cursor || ''}`)
+    return this.http.get<HeroGetResponse>(`${this.heroesUrl}/heroes?${cursor || ''}`)
       .pipe(
         tap(_ => this.log('fetched heroes')),
         catchError(this.handleError<HeroGetResponse>('getHeroes', { heroes: [], cursor: undefined }))
@@ -32,6 +33,7 @@ export class HeroService {
   }
 
   getTopHeroes(): Observable<HeroGetResponse> {
+    console.log(`${this.heroesUrl}/top-heroes`)
     return this.http.get<HeroGetResponse>(`${this.heroesUrl}/top-heroes`)
       .pipe(
         tap(_ => this.log('fetched heroes')),

@@ -1,30 +1,30 @@
 <div *ngIf="hero">
-  
-  
-    <div id="name-hero">
-      <h2>{{hero.name | uppercase}} <span> - ID: </span>{{hero.id}} </h2>
-    </div>
 
-    <form [formGroup]="formGroup" (ngSubmit)="save()">
-     <mat-form-field class="full-width">
+
+  <div id="name-hero">
+    <h2>{{hero.name | uppercase}} <span> - ID: </span>{{hero.id}} </h2>
+  </div>
+
+  <form [formGroup]="formGroup" (ngSubmit)="save()">
+    <mat-form-field class="full-width">
       <mat-label>Hero name</mat-label>
-      <input matInput placeholder="Hero name" formControlName = "name">
-      
+      <input matInput placeholder="Hero name" formControlName="name">
+
       <mat-error *ngIf="formGroup.get('name').hasError('required')">O nome é obrigatório</mat-error>
     </mat-form-field>
 
     <br>
     <mat-form-field class="full-width">
       <mat-label>Hero Description:</mat-label>
-      <textarea matInput  placeholder="Hero Description"></textarea>
-      
+      <textarea matInput placeholder="Hero Description"></textarea>
+
     </mat-form-field>
 
     <br>
 
     <mat-form-field class="full-width">
       <mat-label>Hero image url: </mat-label>
-      <input matInput  placeholder="Hero Image" formControlName= "imageUrl">
+      <input matInput placeholder="Hero Image" formControlName="imageUrl">
       <mat-error *ngIf="formGroup.get('imageUrl').hasError('required')">URL é obrigatório</mat-error>
     </mat-form-field>
     <br>
@@ -42,9 +42,9 @@
     </div>
     <br>
     <div id="button-back-save">
-      <button  mat-raised-button type= "button"(click)="goBack()">go back</button>
-      <button  mat-raised-button type="submit" color="primary" [disabled]="!formGroup.valid">save</button>
+      <button mat-raised-button type="button" (click)="goBack()">go back</button>
+      <button mat-raised-button type="submit" color="primary" [disabled]="!formGroup.valid">save</button>
     </div>
-    
+
   </form>
 </div>
